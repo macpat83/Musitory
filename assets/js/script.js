@@ -9,14 +9,24 @@ var resultTitleEl = document.querySelector('.youtube-title');
 var artist_BTN = "button is-rounded is-fullwidth mt-1";
 var HISTORY_DATA = "artist-data";
 var HISTORY_ARTIST = 'artistSearchHistory';
+var btnClear = document.getElementById("btnClear");
 //var btn = document.querySelector('#button')
+
+
+btnClear.onclick = function (event) {
+  event.preventDefault();
+  localStorage.clear();
+  if(localStorage.length === 0)
+     searchHistory.empty();
+};
+
 
 var historyArr = JSON.parse(localStorage.getItem(HISTORY_ARTIST));
 if (!historyArr) {
   historyArr = [];
 }
 
-var searchHistory = $("#artist-history").empty();
+var searchHistory = $("#artist-history")
 
 var formSubmitHandler = function(event) {
     // prevent page from refreshing
@@ -124,52 +134,18 @@ var displayHighlights = function(hits,searchTerm) {
       // append container to the dom
     resultsContainerEl.appendChild(highlightsEl);
 
-    
-
-    // $("#artist-history").on("click", handleHistoryItemClick);
 
     
         
     }
 };
 
-// var showHide = function() {
-//     var div = document.getElementById('#info-boxes');
-//     if (div.style.display == 'none') {
-//       div.style.display = '';
-//     }
-//     else {
-//       div.style.display = 'none';
-//     }
-//   }
 
-
-
-    // var apiURL = "https://genius.p.rapidapi.com/" + artist + "/:id/songs"
-    // make a get request to url
-    
-    
-    // fetch('https://genius.p.rapidapi.com/search?q=' + artist, options)
-      
-    //   .then(function(response) {
-    //     // request was successful
-    //     if (response.ok) {
-    //       console.log(response);
-    //       response.json().then(function(data) {
-    //         console.log(data);
-    //         // displayAlbums(data, artist);
-    //       });
-    //     } else {
-    //       alert('Error: ' + response.statusText);
-    //     }
-    //   })
-    //   .catch(function(error) {
-    //     alert('Unable to connect to Musitory');
-    //   });
   
 
   // add event listeners to forms
 userFormEl.addEventListener('submit', formSubmitHandler);
+userFormEl.addEventListener('click', btnClear);
 
 
 //get youtube api
