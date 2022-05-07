@@ -13,12 +13,6 @@ var btnClear = document.getElementById("btnClear");
 //var btn = document.querySelector('#button')
 
 
-btnClear.onclick = function (event) {
-  event.preventDefault();
-  localStorage.clear();
-  if(localStorage.length === 0)
-     searchHistory.empty();
-};
 
 
 var historyArr = JSON.parse(localStorage.getItem(HISTORY_ARTIST));
@@ -41,12 +35,13 @@ var formSubmitHandler = function(event) {
 
     // get value from input element
     var artist = artistInputEl.value.trim();
-    //add artist to History
-    addArtistHistory(artist);
+    
+    
   
     if (artist) {
       getArtist(artist);
       searchByKeyword(artist);
+      addArtistHistory(artist);
   
       // clear old content
       resultsContainerEl.textContent = '';
@@ -74,10 +69,10 @@ var getArtist = function(artist) {
     fetch('https://genius.p.rapidapi.com/search?q=' + artist, options)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            //console.log(data)
             displayHighlights(data.response.hits, artist)
         })
-        //.then(response => console.log(response))
+        //.then(response => //console.log(response))
         .catch(err => console.error(err));
         //displayHighlights(data, artist)
 }
@@ -97,7 +92,7 @@ var displayHighlights = function(hits,searchTerm) {
 
       // format highlights name
       var highlightsName = hits[i].result.full_title;
-      console.log(highlightsName);
+      //console.log(highlightsName);
   
       // create a container for each highlight
       var highlightsEl = document.createElement("div");
@@ -140,12 +135,22 @@ var displayHighlights = function(hits,searchTerm) {
     }
 };
 
+const clearHistory = function (event) {
+  event.preventDefault();
+  localStorage.clear();
+  historyArr = [];
+  if(localStorage.length === 0) {
+     searchHistory.empty();
+  }
+  console.log("storage clear")
+    
+};
 
   
 
   // add event listeners to forms
 userFormEl.addEventListener('submit', formSubmitHandler);
-userFormEl.addEventListener('click', btnClear);
+btnClear.addEventListener('click', clearHistory);
 
 
 //get youtube api
@@ -162,10 +167,10 @@ userFormEl.addEventListener('click', btnClear);
     fetch('https://youtube-v31.p.rapidapi.com/search?q='+ artist +'songs&part=id%2Cid&regionCode=US&maxResults=5', options) //&order=date
       .then(response => response.json())
       .then(data => {
-          console.log(data)
+          //console.log(data)
           displayArtistVideo(data.items, artist)
       })
-      .then(response => console.log(response))
+      //.then(response => console.log(response))
       .catch(err => console.error(err));
   };
   
@@ -183,7 +188,7 @@ var displayArtistVideo = function(items) {
 
         // format highlights name
         var videoId = items[i].id.videoId;
-        console.log(videoId);
+        //console.log(videoId);
 
         var youtubeEl = document.createElement("iframe");
         youtubeEl.setAttribute("src", "https://www.youtube.com/embed/" + videoId);
@@ -198,7 +203,7 @@ var displayArtistVideo = function(items) {
 function artistHistory() {
     // clear artist history
     var searchHistory = $("#artist-history").empty();
-    console.log("adding artist history");
+    //console.log("adding artist history");
   
     // for each item in history array
     historyArr.forEach(artist => {
@@ -217,7 +222,6 @@ function artistHistory() {
   
   function addArtistHistory(artist) {
     // not to add artist in history twice
-    console.log(historyArr);
     if (!historyArr.includes(artist)&& artist.trim()) {
     
       historyArr.push(artist);
@@ -233,3 +237,7 @@ function artistHistory() {
   }
 
   artistHistory();
+
+  
+
+  
