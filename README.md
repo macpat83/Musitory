@@ -14,6 +14,8 @@
 
 * When user clicks search option, youTube display is available
 
+* When search is commited, the search item is persistent and it is clickable/reusable for next time
+
 
 # Additional description about the project and its Development
 
