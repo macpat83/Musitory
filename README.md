@@ -8,14 +8,13 @@
 
 * A music app that lets user search by artist and pull up their top 10 songs
 
-* When a user clicks on a particular song of their top 10 choices 
-
 * When a song choice is clicked, it opens up a new page where the song can play, lyrics gets displayed, brief story of the artist, and a search option for more
 
 * When user clicks search option, youTube display is available
 
-
 * When search is commited, the search item is persistent and it is clickable/reusable for next time
+
+* When user clicks on clear history, history tabs disappear
 
 
 # Additional description about the project and its Development
