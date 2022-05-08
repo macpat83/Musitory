@@ -41,9 +41,7 @@
 
 ![screencapture-musitory](https://user-images.githubusercontent.com/101297588/167228635-66006852-5600-43a2-890e-52cdf76ab321.png)
 =======
-## Written with
 
-HTML, CSS, Bulma, and JavaScript
 
 ## Contributors:
 
