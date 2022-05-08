@@ -19,7 +19,7 @@ var historyArr = JSON.parse(localStorage.getItem(HISTORY_ARTIST));
 if (!historyArr) {
   historyArr = [];
 }
-
+//stores search history
 var searchHistory = $("#artist-history")
 
 var formSubmitHandler = function(event) {

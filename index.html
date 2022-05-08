@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="./assets/img/favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href=".\assets\css\style.css">
     <title>Musitory</title>
@@ -25,9 +26,9 @@
       <div class="info-boxes columns is-flex is-justify-content-space-evenly mt-2 ml-5">
         <div class="info-boxes column is-3"><img src=".\assets\img\serachbox.jpg" alt="music notes" width="300" height="200">
           <p>Music database consisting of all artist across a multitude of genres</p></div>
-        <div class="info-boxes column is-3"><img src=".\assets\img\top-10-music.png" alt="music notes" width="300" height="200">
+        <div class="info-boxes column is-3"><img src=".\assets\img\top-10-music.png" alt="an image saying top 10 music" width="300" height="200">
           <p>Get artist top 10 songs with lyrics</p></div>
-        <div class="info-boxes column is-3"><img src=".\assets\img\youtube-music-app1.png" alt="music notes" width="300" height="200">
+        <div class="info-boxes column is-3"><img src=".\assets\img\youtube-music-app1.png" alt="image showing a youtube player" width="300" height="200">
           <p>Get artist youtube videos</p></div>
       </div>
 
@@ -39,10 +40,10 @@
       <div class="columns">
           <div class="search-boxes column is-4 ml-2 mr-2">
       <div class="card mt-3">
-          <h3 class="card-header is-uppercase">Search by Artist</h3>
+          <h3 class="card-header is-uppercase">Search Database</h3>
           <form id="user-form" class="card-body">
             <input name="artist" id="artist" type="text" autofocus="true" class="form-input" placeholder="Enter Artist" />
-            <button type="submit" class="button">GetArtist</button> <button class="button" id="btnClear">Clear History</button>
+            <button type="submit" class="button">Get Song</button> <button class="button" id="btnClear">Clear History</button>
           </form>
       </div>
       <div id="artist-history"></div>
@@ -60,7 +61,7 @@
 <div class="result-box column ml-1">
     <h2 class="result-title mt-3"><span id="result-search-term"></span></h2>
     <div id="results-container" class="list-group columns is-multiline">
-      <img id="collage" class id="collage" src="../project-01/assets/img/8ofthedecademiddle.jpg">
+      <img id="collage" class id="collage" src="../project-01/assets/img/8ofthedecademiddle.jpg" alt="The current top ten artists">
     </div>
   </div>
 
