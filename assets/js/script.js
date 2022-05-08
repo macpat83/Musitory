@@ -19,7 +19,7 @@ var historyArr = JSON.parse(localStorage.getItem(HISTORY_ARTIST));
 if (!historyArr) {
   historyArr = [];
 }
-//stores search history
+
 var searchHistory = $("#artist-history")
 
 var formSubmitHandler = function(event) {
@@ -64,12 +64,12 @@ var getArtist = function(artist) {
     fetch('https://genius.p.rapidapi.com/search?q=' + artist, options)
         .then(response => response.json())
         .then(data => {
-            //console.log(data)
+            console.log(data)
             displayHighlights(data.response.hits, artist)
         })
         .then(response => console.log(response))
         .catch(err => console.error(err));
-        displayHighlights(data, artist)
+        //displayHighlights(data, artist)
 }
 
 //function to display results
