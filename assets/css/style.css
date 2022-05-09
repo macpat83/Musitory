@@ -133,12 +133,6 @@ overflow-y: auto;
   display:flex; 
 }
 
-<<<<<<< HEAD
-  .subtitle {
-    padding: 0px
-  }
-}
-=======
 .herobody1{
   display: flex;
   flex-wrap: wrap;
@@ -151,5 +145,6 @@ overflow-y: auto;
 .subtitle {
   padding: 0px
 }
+
 }
->>>>>>> 73e79f608f3811736e9b22d460ba63129eb72415
+

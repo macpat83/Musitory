@@ -1,9 +1,8 @@
 # Musitory - a music database app
 
-* Application Link ------
+* Application Link https://github.com/macpat83/project-01
+* Repo Link https://macpat83.github.io/project-01/
 
-Search Page:
-![screenshot](./assets/img/1651262541938.png)
 
 ## Description
 
@@ -15,9 +14,11 @@ Search Page:
 
 * When user clicks search option, youTube display is available
 
-Additional description about the project and its Development
 
-.
+* When search is commited, the search item is persistent and it is clickable/reusable for next time
+
+
+# Additional description about the project and its Development
 
 ## Built With
 
@@ -29,9 +30,6 @@ Additional description about the project and its Development
 - YOUTUBE API
 - GITHUB 
 
-## Live Demo
-
-[Live Demo Link](./)
 
 ## Future Development
 
@@ -40,4 +38,25 @@ Additional description about the project and its Development
 - Add extra functionality and a contact page.
 
 
+=======
+## Written with
+
+HTML, CSS, Bulma, and JavaScript
+
+## Contributors:
+
+McKinley Wiltz
+
+Andrea West
+
+Salem Zerezghi
+
+Safiya Simmonds
+
+Cristian Perez
+
+
+
+
+![macpat83 github io_project-01_](https://user-images.githubusercontent.com/100632883/167276211-9c6fe7ee-0cd3-4da3-853a-d0dd867a9ddf.png)
 
