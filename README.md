@@ -1,7 +1,7 @@
 # Musitory - a music database app
 
-* Application Link https://github.com/macpat83/project-01
-* Repo Link https://macpat83.github.io/project-01/
+* Application Link https://macpat83.github.io/Musitory/
+* Repo Link https://github.com/macpat83/Musitory.git
 
 
 ## Description
