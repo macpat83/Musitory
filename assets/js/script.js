@@ -25,19 +25,14 @@ var searchHistory = $("#artist-history")
 var formSubmitHandler = function(event) {
     // prevent page from refreshing
     event.preventDefault();
-
- 
-
     
-   //hide info boxes
+    //hide info boxes
    hideInfoBoxesEl.forEach(el => el.setAttribute("style", "display:none"));
        
-
-    // get value from input element
+   // get value from input element
     var artist = artistInputEl.value.trim();
-    
-    
-  
+
+    // run functions after artist is entered
     if (artist) {
       getArtist(artist);
       searchByKeyword(artist);
@@ -46,16 +41,16 @@ var formSubmitHandler = function(event) {
       // clear old content
       resultsContainerEl.textContent = '';
       artistInputEl.value = '';
-
+      //check if artist or lyrics was entered
       youtubeContainerEl.textContent = '';
     } else {
-      alert('Please enter an artist');
+      alert('Please enter an artist or lyrics');
     }
     
     
   };
 
-
+//function to get artist entered
 var getArtist = function(artist) {
     //format the github api url
     const options = {
@@ -69,14 +64,15 @@ var getArtist = function(artist) {
     fetch('https://genius.p.rapidapi.com/search?q=' + artist, options)
         .then(response => response.json())
         .then(data => {
-            //console.log(data)
+            console.log(data)
             displayHighlights(data.response.hits, artist)
         })
-        //.then(response => //console.log(response))
+        .then(response => console.log(response))
         .catch(err => console.error(err));
         //displayHighlights(data, artist)
 }
 
+//function to display results
 var displayHighlights = function(hits,searchTerm) {
     // check if api returned any highlights
     if (hits.length === 0) {
@@ -85,7 +81,6 @@ var displayHighlights = function(hits,searchTerm) {
     }
   
     resultSearchTerm.textContent = 'Showing Top 10 Songs for: ' + searchTerm;
-    //var artist_id = hits[0].result.primary_artist
     // loop over highlights
     resultsContainerEl.innerHTML =" ";
     for (var i = 0; i < hits.length; i++) {
@@ -111,11 +106,13 @@ var displayHighlights = function(hits,searchTerm) {
       var statusEl = document.createElement('span');
       statusEl.classList = 'is-flex-direction-row is-align-content-center';
 
+      //display song image art
       var imageEl = document.createElement('img');
       imageEl.setAttribute("src", hits[i].result.song_art_image_url)
       imageEl.classList.add("song-art")
       highlightsEl.appendChild(imageEl);
 
+    //create button that links to lyrics
     var linkEl = document.createElement('a')
     var ButtonEl = document.createElement('button')
     ButtonEl.classList = 'button is-block'
@@ -135,6 +132,7 @@ var displayHighlights = function(hits,searchTerm) {
     }
 };
 
+//clear local storage/html history
 const clearHistory = function (event) {
   event.preventDefault();
   localStorage.clear();
@@ -164,7 +162,7 @@ btnClear.addEventListener('click', clearHistory);
       }
     }
     
-    fetch('https://youtube-v31.p.rapidapi.com/search?q='+ artist +'songs&part=id%2Cid&regionCode=US&maxResults=5', options) //&order=date
+    fetch('https://youtube-v31.p.rapidapi.com/search?q='+ artist +'songs&part=id%2Cid&regionCode=US&maxResults=5', options)
       .then(response => response.json())
       .then(data => {
           //console.log(data)
@@ -174,6 +172,7 @@ btnClear.addEventListener('click', clearHistory);
       .catch(err => console.error(err));
   };
   
+  //function to display artist videos
 var displayArtistVideo = function(items) {
     // check if api returned any highlights
     youtubeContainerEl.innerHTML = "";
@@ -190,6 +189,7 @@ var displayArtistVideo = function(items) {
         var videoId = items[i].id.videoId;
         //console.log(videoId);
 
+        //create youtube video
         var youtubeEl = document.createElement("iframe");
         youtubeEl.setAttribute("src", "https://www.youtube.com/embed/" + videoId);
         youtubeEl.style.width = "300px";
@@ -199,7 +199,7 @@ var displayArtistVideo = function(items) {
 }
 
 }
-
+//function to save and display search history
 function artistHistory() {
     // clear artist history
     var searchHistory = $("#artist-history").empty();
@@ -220,6 +220,7 @@ function artistHistory() {
     });
   }
   
+  //function to add artist history
   function addArtistHistory(artist) {
     // not to add artist in history twice
     if (!historyArr.includes(artist)&& artist.trim()) {
@@ -230,6 +231,7 @@ function artistHistory() {
     } 
   }
 
+  //reset results to button pressed in history
   function handleHistoryItemClick(event) {
     if (event.target.matches("button")) {
       displayHighlights($(event.target).attr(HISTORY_DATA));
